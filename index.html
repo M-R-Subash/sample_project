@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if else</title>
+    <style>
+        .main, #me, #popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px black solid;
+            padding: 30px 60px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.6);
+            background-color: blanchedalmond;
+            text-align: center;
+        }
+
+        #popup {
+            width: 400px;
+        }
+
+        #me {
+            width: 300px;
+        }
+
+        #overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            background-color: hsla(0, 0%, 0%, 0.274);
+            z-index: 1;
+            display: none;
+        }
+
+        #popup h1, #popup h2, span {
+            color: red;
+        }
+
+        #me, #popup {
+            display: none;
+            z-index: 3;
+        }
+
+        .main h2 {
+            font-size: 27px;
+        }
+
+        #inputName {
+            height: 30px;
+            border-radius: 10px;
+            outline: 0;
+            border: 1px solid black;
+            padding: 5px 10px;
+            width: 200px;
+            letter-spacing: 2px;
+        }
+
+        #inputName::placeholder {
+            color: black;
+            letter-spacing: 2px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border-radius: 10px;
+            letter-spacing: 2px;
+            color: red;
+            font-weight: 500;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h2>Enter Your Name</h2>
+        <input id="inputName" placeholder="Name">
+        <br><br>
+        <button id="submitBtn">Submit</button>
+    </div>
+
+    <div id="overlay"></div>
+    <div id="me">
+        <h2 id="subash">Mooditu Un Name Ah Podu Bro...</h2>
+        <button class="close">Okay</button>
+    </div>
+    <div id="popup">
+        <h1>Congratulations !!!</h1>
+        <h2 id="inputDisplay">hi</h2>
+        <h4>You have just registered for a Gay Certificate !!!</h4>
+        <h4>Now you are certified as a <span>VANAVILL !!!</span></h4>
+        <h4>You can download your Gay Certificate !!!</h4>
+        <button class="close">Download</button>
+    </div>
+    
+    <script>
+        var inputName = document.getElementById("inputName");
+        var submitBtn = document.getElementById("submitBtn");
+        var exitButtons = document.querySelectorAll(".close");
+        var inputDisplay = document.getElementById("inputDisplay");
+        var overlay = document.getElementById("overlay");
+        var popup = document.getElementById("popup");
+        var me = document.getElementById("me");
+        var main1 = document.querySelector(".main");
+
+        submitBtn.onclick = function() {
+            var name = inputName.value.trim().toLowerCase();
+            if (name === "zoro" || name === "subash") {
+                overlay.style.display = "block";
+                me.style.display = "block";
+                main1.style.display = "none";
+            } else {
+                inputDisplay.textContent = inputName.value;
+                overlay.style.display = "block";
+                popup.style.display = "block";
+                main1.style.display = "none";
+            }
+        }
+
+        exitButtons.forEach(function(button) {
+            button.onclick = function() {
+                main1.style.display = "block";
+                overlay.style.display = "none";
+                popup.style.display = "none";
+                me.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
