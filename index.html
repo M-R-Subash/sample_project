@@ -106,6 +106,10 @@
         var me = document.getElementById("me");
         var main1 = document.querySelector(".main");
 
+        inputName.addEventListener('input', function(e){
+            this.value = this.value.replace(/[^A-Za-z]/g,"")
+        })
+        
         submitBtn.onclick = function() {
             var name = inputName.value.trim().toLowerCase();
             if (name === "zoro" || name === "subash" || name==="siddeq") {
@@ -131,5 +135,6 @@
     </script>
 </body>
 </html>
+
 
 
